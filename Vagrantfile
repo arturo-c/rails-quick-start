@@ -32,6 +32,7 @@ Vagrant::Config.run do |config|
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["drupal-quick-start/cookbooks", "rails-quick-start/cookbooks"]
     chef.roles_path = "rails-quick-start/roles"
+    chef.data_bags_path = "rails-quick-start/data_bags"
     chef.add_recipe "solo_helper"
     chef.add_role "base"
     # chef.add_role "radiant_database_master"
