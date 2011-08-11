@@ -35,11 +35,16 @@ Vagrant::Config.run do |config|
     chef.data_bags_path = "rails-quick-start/data_bags"
     chef.add_recipe "solo_helper"
     chef.add_role "base"
-    # chef.add_role "radiant_database_master"
+    chef.add_role "radiant_database_master"
     chef.add_role "radiant"
-    # chef.add_role "radiant_run_migrations"
-    # chef.add_recipe "radiant::db_bootstrap"
-    # chef.add_role "radiant_load_balancer"
+    chef.add_role "radiant_run_migrations"
+    chef.add_recipe "radiant::db_bootstrap"
+    chef.add_role "radiant_load_balancer"
+    chef.json = {
+      :cloud => {
+        :public_ipv4 => "127.0.0.1",
+        :local_ipv4  => "127.0.0.1"
+      }
+    }
   end
-
 end
