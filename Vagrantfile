@@ -26,15 +26,17 @@ Vagrant::Config.run do |config|
   # folder, and the third is the path on the host to the actual folder.
   # config.vm.share_folder "v-data", "/vagrant_data", "../data"
   config.vm.share_folder("v-root", "/vagrant", ".", :nfs => true)
+  config.vm.share_folder("v-apt", "/var/cache/apt", "~/temp/vagrant_aptcache/apt", :nfs => true)
+  
 
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["drupal-quick-start/cookbooks", "rails-quick-start/cookbooks"]
-    chef.roles_path = "rails-quick-start/roles"
+    chef.roles_path = ["custom/roles", "rails-quick-start/roles"]
     chef.data_bags_path = "rails-quick-start/data_bags"
     chef.add_recipe "solo_helper"
-    chef.add_role "base"
+    chef.add_role "vagrant_base"
     chef.add_role "radiant_database_master"
     chef.add_role "radiant"
     chef.add_role "radiant_run_migrations"
@@ -46,5 +48,6 @@ Vagrant::Config.run do |config|
         :local_ipv4  => "127.0.0.1"
       }
     }
+    chef.log_level = :debug
   end
 end
