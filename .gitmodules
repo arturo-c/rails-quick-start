@@ -1,0 +1,3 @@
+[submodule "rails-quick-start"]
+	path = rails-quick-start
+	url = https://github.com/opscode/rails-quick-start.git
