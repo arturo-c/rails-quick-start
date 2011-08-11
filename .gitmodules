@@ -1,3 +1,6 @@
 [submodule "rails-quick-start"]
 	path = rails-quick-start
 	url = https://github.com/opscode/rails-quick-start.git
+[submodule "drupal-quick-start"]
+	path = drupal-quick-start
+	url = git://github.com/glennpratt/drupal-quick-start.git

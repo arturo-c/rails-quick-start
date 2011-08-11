@@ -30,14 +30,15 @@ Vagrant::Config.run do |config|
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
   config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = "rails-quick-start/cookbooks"
+    chef.cookbooks_path = ["drupal-quick-start/cookbooks", "rails-quick-start/cookbooks"]
     chef.roles_path = "rails-quick-start/roles"
+    chef.add_recipe "solo_helper"
     chef.add_role "base"
-    chef.add_role "radiant_database_master"
+    # chef.add_role "radiant_database_master"
     chef.add_role "radiant"
-    chef.add_role "radiant_run_migrations"
-    chef.add_recipe "radiant::db_bootstrap"
-    chef.add_role "radiant_load_balancer"
+    # chef.add_role "radiant_run_migrations"
+    # chef.add_recipe "radiant::db_bootstrap"
+    # chef.add_role "radiant_load_balancer"
   end
 
 end
