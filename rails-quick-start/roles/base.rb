@@ -8,12 +8,12 @@ run_list(
   "recipe[git]",
   "recipe[build-essential]"
 )
-#override_attributes(
-#  :authorization => {
-#    :sudo => {
-#      :users => ["ubuntu"],
-#      :passwordless => true
-#    }
-#  }
-#)
+override_attributes(
+ :authorization => {
+   :sudo => {
+     :users => ["ubuntu", "vagrant"],
+     :passwordless => true
+   }
+ }
+)
 
