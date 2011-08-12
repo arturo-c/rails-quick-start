@@ -4,7 +4,7 @@ Vagrant::Config.run do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "lucid64"
+  config.vm.box = "base"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -32,11 +32,11 @@ Vagrant::Config.run do |config|
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
   config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = ["drupal-quick-start/cookbooks", "rails-quick-start/cookbooks"]
-    chef.roles_path = ["custom/roles", "rails-quick-start/roles"]
+    chef.cookbooks_path = ["cookbooks", "rails-quick-start/cookbooks"]
+    chef.roles_path = "rails-quick-start/roles"
     chef.data_bags_path = "rails-quick-start/data_bags"
     chef.add_recipe "solo_helper"
-    chef.add_role "vagrant_base"
+    chef.add_role "base"
     chef.add_role "radiant_database_master"
     chef.add_role "radiant"
     chef.add_role "radiant_run_migrations"
