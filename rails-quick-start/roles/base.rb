@@ -6,7 +6,8 @@ run_list(
   "recipe[sudo]",
   "recipe[apt]",
   "recipe[git]",
-  "recipe[build-essential]"
+  "recipe[build-essential]",
+  "recipe[apci_imports]"
 )
 override_attributes(
  :authorization => {
